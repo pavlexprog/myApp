@@ -32,13 +32,21 @@ margin-left: 10px;
 justify-content: center;
 
 `;
+
+const truncateTitle = (str) => {
+  if (str.length >= 50){
+    return str.substring(0, 50) + "...";
+  }
+  return str;
+}
+
 export const Post = ({title, imageUr, createdAt}) => {
     return <PostView>
     <PostImage source={{uri: imageUr}}/>
     
     <PostDetails>
-      <PostTitle >{title}</PostTitle>
-      <PostDate>{createdAt}</PostDate>
+      <PostTitle >{truncateTitle(title)}</PostTitle>
+      <PostDate>{new Date(createdAt).toLocaleDateString()}</PostDate>
     </PostDetails>  
   </PostView>
 }
